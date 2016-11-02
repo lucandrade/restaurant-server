@@ -1,3 +1,5 @@
+'use strict';
+
 var response = require('./response');
 
 module.exports = {
