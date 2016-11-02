@@ -8,6 +8,7 @@ var passport = require('passport');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var products = require('./routes/products');
+var tables = require('./routes/tables');
 var app = express();
 var passport = require('passport');
 var path = require('path');
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/user', users);
 app.use('/product', products);
+app.use('/table', tables);
 
 require('./auth/passport')(passport);
 require('./config/error').handle(app);
