@@ -35,7 +35,9 @@ router.post('/auth', function (req, res, next) {
 router.get('/logged', function (req, res, next) {
     authenticate(req, res, next);
 }, function (req, res, next) {
-    res.send(response.setAsSuccess().setData(req.isAuthenticated()).get());
+    res.send(response.setAsSuccess().setData({
+        user: req.user
+    }).get());
 });
 
 router.get('/list', function (req, res, next) {

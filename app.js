@@ -15,6 +15,14 @@ var path = require('path');
 
 database.connect();
 
+if (app.get('env') === 'development') {
+    var cors = require('cors');
+    app.use(cors({
+        origin: true,
+        credentials: true
+    }));
+}
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
