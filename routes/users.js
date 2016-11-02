@@ -39,6 +39,8 @@ router.get('/logged', function (req, res, next) {
 });
 
 router.get('/list', function (req, res, next) {
+    authenticate(req, res, next);
+}, function (req, res, next) {
     User.find(function (err, data) {
         res.send(response.setAsSuccess().setData({users: data}).get());
     });

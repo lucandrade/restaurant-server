@@ -7,6 +7,11 @@ var multer = require('multer');
 var upload = multer({ dest: 'public/uploads/' });
 var createProduct = require('../functions/product/create');
 var findProduct = require('../functions/product/findActive');
+var authenticate = require('../auth/authenticate');
+
+router.use(function (req, res, next) {
+    authenticate(req, res, next);
+});
 
 router.get('/', function (req, res, next) {
     findProduct(function (products) {
