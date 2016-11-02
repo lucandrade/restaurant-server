@@ -39,6 +39,11 @@ UserSchema.set('toJSON', {
 
 UserSchema.pre('save', function (next) {
     var user = this;
+
+    if (!this.isNew) {
+        user.updated_at = Date.now();
+    }
+
     if (this.isModified('password') || this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) {
@@ -49,6 +54,7 @@ UserSchema.pre('save', function (next) {
                 if (err) {
                     return next(err);
                 }
+
                 user.password = hash;
                 next();
             });

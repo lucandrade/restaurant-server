@@ -14,4 +14,12 @@ var TableSchema = new Schema({
 
 TableSchema.plugin(uniqueValidator, { message: 'Nome da mesa já cadastrado' });
 
+TableSchema.pre('save', function (next) {
+    var table = this;
+    if (!this.isNew) {
+        table.updated_at = Date.now();
+    }
+    return next();
+});
+
 module.exports = mongoose.model('Table', TableSchema);
