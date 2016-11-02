@@ -22,6 +22,21 @@ var UserSchema = new Schema({
 
 UserSchema.plugin(uniqueValidator, { message: 'Login já cadastrado' });
 
+UserSchema.set('toJSON', {
+    transform: function(doc, ret, options) {
+        var retJson = {
+            id: ret._id,
+            username: ret.username,
+            name: ret.name,
+            type: ret.type,
+            status: ret.status,
+            created_at: ret.created_at,
+            updated_at: ret.updated_at
+        };
+        return retJson;
+    }
+});
+
 UserSchema.pre('save', function (next) {
     var user = this;
     if (this.isModified('password') || this.isNew) {
