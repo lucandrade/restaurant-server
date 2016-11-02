@@ -3,7 +3,7 @@
 var User = require('../models/user');
 
 function createUser(data, success, fail) {
-    User.create(data, function (err, user) {
+    User.create(data, function userCreatedResponse(err, user) {
         if (err) {
             if (err.errors) {
                 var messages = {};
