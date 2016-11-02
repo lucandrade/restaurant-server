@@ -12,6 +12,10 @@ function database() {
     }
 
     me.getConnection = function () {
+        if (mongoose.Promise !== global.Promise) {
+            mongoose.Promise = global.Promise;
+        }
+
         return mongoose;
     }
 

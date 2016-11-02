@@ -19,7 +19,7 @@ function createTable(data, success, fail) {
 
             return fail(err);
         } else {
-            success(table);
+            return success(table);
         }
     });
 }
