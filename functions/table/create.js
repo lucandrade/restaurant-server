@@ -1,9 +1,9 @@
 'use strict';
 
-var User = require('../models/user');
+var Table = require('../../models/table');
 
-function createUser(data, success, fail) {
-    User.create(data, function userCreatedResponse(err, user) {
+function createTable(data, success, fail) {
+    Table.create(data, function tableCreatedResponse(err, table) {
         if (err) {
             if (err.errors) {
                 var messages = {};
@@ -19,9 +19,9 @@ function createUser(data, success, fail) {
 
             return fail(err);
         } else {
-            success(user);
+            return success(table);
         }
     });
 }
 
-module.exports = createUser;
+module.exports = createTable;

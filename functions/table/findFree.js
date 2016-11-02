@@ -1,6 +1,6 @@
 'use strict';
 
-var Table = require('../models/table');
+var Table = require('../../models/table');
 
 function findFreeTable(success, fail) {
     Table.find({

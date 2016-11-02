@@ -4,8 +4,8 @@ var express = require('express');
 var router = express.Router();
 var response = require('../config/response');
 var User = require('../models/user');
-var authenticateUser = require('../functions/authenticateUser');
-var generateUserToken = require('../functions/generateUserToken');
+var authenticateUser = require('../functions/user/authenticate');
+var generateUserToken = require('../functions/user/generateToken');
 var authenticate = require('../auth/authenticate');
 
 router.get('/', function (req, res, next) {

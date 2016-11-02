@@ -1,7 +1,7 @@
 'use strict';
 
 var jwt = require('jwt-simple');
-var config = require('../config/app');
+var config = require('../../config/app');
 
 function generateUserToken (user) {
     var token = jwt.encode({

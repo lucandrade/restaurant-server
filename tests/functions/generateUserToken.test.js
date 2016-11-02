@@ -2,7 +2,7 @@
 
 var jwt = require('jwt-simple');
 var config = require('../../config/app');
-var generateUserToken = require('../../functions/generateUserToken');
+var generateUserToken = require('../../functions/user/generateToken');
 var assert = require('assert');
 var data = {
     id: 3423424234

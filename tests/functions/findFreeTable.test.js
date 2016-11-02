@@ -1,8 +1,8 @@
 'use strict';
 
 var utils = require('../utils');
-var createTable = require('../../functions/createTable');
-var findFreeTable = require('../../functions/findFreeTable');
+var createTable = require('../../functions/table/create');
+var findFreeTable = require('../../functions/table/findFree');
 var assert = require('assert');
 var data = [
     {

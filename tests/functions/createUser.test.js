@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = require('../utils');
-var createUser = require('../../functions/createUser');
+var createUser = require('../../functions/user/create');
 var assert = require('assert');
 var data = {
     name: 'Lucas',

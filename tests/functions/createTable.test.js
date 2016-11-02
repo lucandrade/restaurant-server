@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = require('../utils');
-var createTable = require('../../functions/createTable');
+var createTable = require('../../functions/table/create');
 var assert = require('assert');
 var data = {
     name: 'Mesa 1'
