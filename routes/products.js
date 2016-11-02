@@ -3,8 +3,8 @@
 var express = require('express');
 var router = express.Router();
 var response = require('../config/response');
-var multer = require('multer');
-var upload = multer({ dest: 'public/uploads/' });
+var config = require('../config/app');
+var upload = require('../config/upload');
 var createProduct = require('../functions/product/create');
 var findProduct = require('../functions/product/findActive');
 var authenticate = require('../auth/authenticate');
@@ -27,7 +27,7 @@ router.post('/', upload.array('image'), function (req, res, next) {
 
     for (var i in req.files) {
         body.images.push({
-            url: 'sdsd',
+            url: config.upload_url + req.files[i].filename,
             filename: req.files[i].originalname,
             mimetype: req.files[i].mimetype,
             encoding: req.files[i].encoding,

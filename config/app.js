@@ -7,5 +7,7 @@ module.exports = {
         port: process.env.DB_PORT || '27017',
         name: process.env.DB_NAME || 'restaurant'
     },
-    userType: ['admin', 'waiter', 'cashier', 'chef']
+    userType: ['admin', 'waiter', 'cashier', 'chef'],
+    upload_dir: process.env.UPLOAD_DIR || 'public/uploads/',
+    upload_url: process.env.UPLOAD_URL || 'http://localhost:3000/uploads/'
 }
