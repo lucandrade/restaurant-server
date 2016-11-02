@@ -8,6 +8,9 @@ var ProductSchema = new Schema({
     description: { type: String },
     active: { type: Boolean, default: true },
     price: { type: Number },
+    images: [{
+        url: { type: String, required: [true, 'URL da imagem é obrigatório'] }
+    }],
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date }
 });
