@@ -9,7 +9,11 @@ var ProductSchema = new Schema({
     active: { type: Boolean, default: true },
     price: { type: Number },
     images: [{
-        url: { type: String, required: [true, 'URL da imagem é obrigatório'] }
+        url: { type: String, required: [true, 'URL da imagem é obrigatório'] },
+        filename: { type: String },
+        mimetype: { type: String },
+        encoding: { type: String },
+        size: { type: Number },
     }],
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date }

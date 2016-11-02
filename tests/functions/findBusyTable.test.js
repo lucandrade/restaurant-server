@@ -39,7 +39,7 @@ function createTables(cb) {
 }
 
 describe('findBusyTable: functions', function () {
-    it('should get table validation errors', function (done) {
+    it('should get busy tables', function (done) {
         createTables(function () {
             findBusyTable(function (tables) {
                 assert.ok(tables);
