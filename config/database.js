@@ -1,9 +1,21 @@
 var mongoose = require('mongoose');
 var config = require('./app');
 
-module.exports = {
-    connect: function () {
+function database() {
+    var me = this;
+
+    me.getConnectionString = function () {
         var data = config.database;
-        mongoose.connect(data.url + ':' + data.port + '/' + data.name);
+        return data.url + ':' + data.port + '/' + data.name;
+    }
+
+    me.getConnection = function () {
+        return mongoose;
+    }
+
+    me.connect = function () {
+        me.getConnection().connect(me.getConnectionString());
     }
 }
+
+module.exports = new database();
