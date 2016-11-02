@@ -2,18 +2,17 @@
 
 var utils = require('../utils');
 var User = require('../../models/user');
-var should = require('chai').should();
 var assert = require('assert');
+var data = {
+    name: 'Lucas',
+    username: 'lucas',
+    password: 'lucas',
+    type: 'admin'
+}
 
 describe('Users: models', function () {
     describe('#create()', function () {
         it('should get user validation errors', function (done) {
-            var data = {
-                name: 'Lucas',
-                username: 'lucas',
-                password: 'lucas',
-                type: 'admin'
-            }
             var user = new User();
             var error = user.validateSync();
             assert.equal(error.errors['username'].message, 'Login do usuário é obrigatório');
@@ -33,23 +32,12 @@ describe('Users: models', function () {
         });
 
         it('should get username already exists error', function (done) {
-            var data = {
-                name: 'Lucas',
-                username: 'lucas',
-                password: 'lucas',
-                type: 'admin'
-            }
-            var user = new User();
-            user.name = data.name;
-            user.username = data.username;
-            user.password = data.password;
-            user.type = data.type;
+            var user = new User(data);
             var error = user.validateSync();
             assert.ok(!error);
             User.create(user, function (err, created) {
                 assert.ok(!err);
-                var user2 = new User();
-                user2.username = data.username;
+                var user2 = new User(data);
                 User.create(user2, function (err, userCreated) {
                     assert.equal(err.errors['username'].message, 'Login já cadastrado');
                     done();
