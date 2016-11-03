@@ -1,7 +1,7 @@
 'use strict';
 
 var database = require('../config/database');
-var createUser = require('../functions/createUser');
+var createUser = require('../functions/user/create');
 
 database.connect();
 
