@@ -13,7 +13,9 @@ function createTable(data, success, fail) {
                     }
                 }
                 if (Object.keys(messages).length > 0) {
-                    return fail(messages);
+                    return fail({
+                        messages: messages
+                    });
                 }
             }
 

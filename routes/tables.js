@@ -43,7 +43,11 @@ router.post('/', function (req, res, next) {
     createTable(body, function createTable(table) {
         res.send(response.setAsSuccess().setData(table).get());
     }, function (err) {
-        next(err);
+        if (err.messages) {
+            res.send(response.setAsFail().setMessage(err.messages).get());
+        } else {
+            next(err);
+        }
     });
 });
 
