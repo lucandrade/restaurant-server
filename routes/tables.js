@@ -5,6 +5,7 @@ var router = express.Router();
 var response = require('../config/response');
 var createTable = require('../functions/table/create');
 var updateTable = require('../functions/table/update');
+var findById = require('../functions/table/findById');
 var findActive = require('../functions/table/findActive');
 var findBusy = require('../functions/table/findBusy');
 var findFree = require('../functions/table/findFree');
@@ -33,6 +34,14 @@ router.get('/free', function (req, res, next) {
 router.get('/busy', function (req, res, next) {
     findBusy(function (tables) {
         res.send(response.setAsSuccess().setData(tables).get());
+    }, function (err) {
+        return next(err);
+    });
+});
+
+router.get('/:id', function (req, res, next) {
+    findById(req.params.id, function (table) {
+        res.send(response.setAsSuccess().setData(table).get());
     }, function (err) {
         return next(err);
     });
