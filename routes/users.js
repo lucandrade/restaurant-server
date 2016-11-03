@@ -28,7 +28,7 @@ router.post('/auth', function (req, res, next) {
             res.send(response.setAsFail().setMessage(err).get());
         });
     } else {
-        res.send(response.setAsFail().setMessage('Dados inválidos').get());
+        res.send(response.setAsFail().setMessage('Preencha usuário e senha').get());
     }
 });
 

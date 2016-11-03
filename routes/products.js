@@ -38,7 +38,11 @@ router.post('/', upload.array('image'), function (req, res, next) {
     createProduct(body, function createProduct(product) {
         res.send(response.setAsSuccess().setData(product).get());
     }, function (err) {
-        next(err);
+        if (err.messages) {
+            res.send(response.setAsFail().setMessage(err.messages).get());
+        } else {
+            next(err);
+        }
     });
 });
 
