@@ -5,7 +5,8 @@ var Product = require('../../models/product');
 var assert = require('assert');
 var data = {
     name: 'Produto',
-    price: 15.4
+    price: 15.4,
+    description: 'Produto'
 }
 
 describe('Products: models', function () {

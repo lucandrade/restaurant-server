@@ -26,13 +26,14 @@ var data = [
 function createProducts(cb) {
     var products = 0;
     for (var i in data) {
+        data[i].description = data[i].name;
         createProduct(data[i], function (product) {
             products++;
             if (products == data.length) {
                 cb();
             }
         }, function (err) {
-            throw new Error('Erro ao criar mesa');
+            throw new Error('Erro ao criar produto');
         });
     }
 }

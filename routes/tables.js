@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 var response = require('../config/response');
 var createTable = require('../functions/table/create');
+var updateTable = require('../functions/table/update');
 var findActive = require('../functions/table/findActive');
 var findBusy = require('../functions/table/findBusy');
 var findFree = require('../functions/table/findFree');
@@ -41,6 +42,20 @@ router.post('/', function (req, res, next) {
     var body = req.body;
 
     createTable(body, function createTable(table) {
+        res.send(response.setAsSuccess().setData(table).get());
+    }, function (err) {
+        if (err.messages) {
+            res.send(response.setAsFail().setMessage(err.messages).get());
+        } else {
+            next(err);
+        }
+    });
+});
+
+router.put('/:id', function (req, res, next) {
+    var body = req.body;
+
+    updateTable(req.params.id, body, function updateTable(table) {
         res.send(response.setAsSuccess().setData(table).get());
     }, function (err) {
         if (err.messages) {

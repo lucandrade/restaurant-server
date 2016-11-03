@@ -13,7 +13,7 @@ describe('createTable: functions', function () {
             assert.ok(false);
             done();
         }, function (err) {
-            assert.equal(err['name'], 'Nome da mesa é obrigatório');
+            assert.equal(err.messages['name'], 'Nome da mesa é obrigatório');
             done();
         });
     });

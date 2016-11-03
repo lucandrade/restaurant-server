@@ -4,7 +4,8 @@ var utils = require('../utils');
 var createProduct = require('../../functions/product/create');
 var assert = require('assert');
 var data = {
-    name: 'Producto'
+    name: 'Producto',
+    description: 'Produto'
 }
 
 describe('createProduct: functions', function () {
@@ -13,7 +14,7 @@ describe('createProduct: functions', function () {
             assert.ok(false);
             done();
         }, function (err) {
-            assert.equal(err['name'], 'Nome do produto é obrigatório');
+            assert.equal(err.messages['name'], 'Nome do produto é obrigatório');
             done();
         });
     });
